@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SCP Wiki Timers</title>
+
+    <meta charset="UTF-8">
+  </head>
+
+  <body>
+    <h1>Timers</h1>
+
+    <p>
+      Page index:
+    </p>
+
+    <h2 id="timer"><a href="/timer.html">Timer</a></h2>
+
+    <p>
+      An iframe containing a particular instance of a timer counting towards a specified timestamp.
+
+      Timers are "persistent" in that they record the target timestamp in its URL, so an
+      <tt>[[iframe]]</tt> in a forum post will continually target the same time even if
+      the page is reloaded.
+    </p>
+
+    <p>
+      <strong>Query Parameters:</strong>
+    </p>
+
+    <ul>
+      <li>
+        <tt>lang</tt> &mdash; <strong>Required.</strong> The language to be used.
+        For instance, use <tt>en</tt> for English.
+      </li>
+
+      <li>
+        <tt>time</tt> &mdash; <strong>Required.</strong> The target timestamp for the timer.
+        Can either be a UNIX timestamp in seconds, or an ISO date string (whatever Javascript's
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse"><tt>Date.parse()</tt></a> can handle).
+      </li>
+
+      <li>
+        <tt>progress</tt> &mdash; Custom message for while the timer is ticking down.
+      </li>
+
+      <li>
+        <tt>finished</tt> &mdash; Custom message for after the timer has expired.
+      </li>
+
+      <li>
+        <tt>style</tt> &mdash; Custom CSS to inject into the document to style the timer.
+      </li>
+    </ul>
+
+    <h2 id="timer-selector"><a href="/timer/timer-selector.html">Timer Selector</a></h2>
+
+    <p>
+      A utilty to help automatically build a timer instance, to insert into a Wikidot context
+      via <tt>[[iframe]]</tt> wikitext.
+    </p>
+
+    <p>
+      <strong>Query Parameters:</strong>
+    </p>
+
+    <ul>
+      <li>
+        <tt>lang</tt> &mdash; <strong>Required.</strong> The language to be used.
+      </li>
+
+      <li>
+        <tt>style</tt> &mdash; Custom CSS to inject into the document to style the timer.
+      </li>
+    </ul>
+
+    <p>
+      <strong>Template Variables:</strong>
+    </p>
+
+    <p>
+      In the "advanced" section, the output can be customized by setting a template.
+      For instance, each outputted timer can have copy afterwards explaining procedure,
+      or a link to some policy page.
+    </p>
+
+    <p>
+      Variables are substituted as part of the wikitext generation process.
+      The supported values are as follows:
+    </p>
+
+    <ul>
+      <li>
+        <tt>%%url%%</tt> &mdash; The timer URL, with all query parameters.
+      </li>
+
+      <li>
+        <tt>%%iframe%%</tt> &mdash; The Wikidot <tt>[[iframe]]</tt> block, with any styling.
+      </li>
+    </ul>
+  </body>
+</html>

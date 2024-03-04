@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="明日方舟同人中文站计时器">
+    <meta name="keywords" content="arknights,wiki,timer,selector,generator">
+    <link rel="stylesheet" href="/timer-selector.css">
+    <script src="/timer-selector.js"></script>
+    <title>计时器生成工具</title>
+  </head>
+
+  <body>
+    <noscript>This application requires Javascript to function.</noscript>
+
+    <h1 id="error" class="hidden"></h1>
+
+    <div id="form">
+      <fieldset id="timer-type">
+        <legend id="timer-type-label"></legend>
+
+        <!-- Generic -->
+        <span>
+          <input id="timer-type-generic" type="radio" name="timer-type" value="generic" checked>
+          <label id="timer-type-generic-label" for="timer-type"></label>
+        </span>
+
+        <!-- Deletion -->
+        <span>
+          <input id="timer-type-deletion" type="radio" name="timer-type" value="deletion">
+          <label id="timer-type-deletion-label" for="timer-type"></label>
+        </span>
+
+        <!-- Ban -->
+        <span>
+          <input id="timer-type-ban" type="radio" name="timer-type" value="ban">
+          <label id="timer-type-ban-label" for="timer-type"></label>
+        </span>
+      </fieldset>
+
+      <fieldset id="start">
+        <legend id="start-label"></legend>
+
+        <!-- now -->
+        <span>
+          <input id="start-now" type="radio" name="start" value="now" checked>
+          <label id="start-now-label" for="now"></label>
+        </span>
+
+        <!-- later / other time -->
+        <span>
+          <input id="start-later" type="radio" name="start" value="later">
+          <label id="start-later-label" for="later"></label>
+          <input id="start-later-date" class="radio-text" type="date"></input>
+          <input id="start-later-time" class="radio-text" type="time"></input>
+        </span>
+      </fieldset>
+
+      <fieldset id="duration">
+        <legend id="duration-label"></legend>
+
+        <!-- 1 day -->
+        <span>
+          <input id="duration-1d" type="radio" name="duration" value="86400000" checked>
+          <label id="duration-1d-label" for="86400000"></label> <!-- in ms -->
+        </span>
+
+        <!-- 1 week -->
+        <span>
+          <input id="duration-1w" type="radio" name="duration" value="604800000">
+          <label id="duration-1w-label" for="604800000"></label>
+        </span>
+
+        <!-- 2 weeks -->
+        <span>
+          <input id="duration-2w" type="radio" name="duration" value="1209600000">
+          <label id="duration-2w-label" for="1209600000"></label>
+        </span>
+
+        <!-- 1 year -->
+        <span>
+          <input id="duration-1y" type="radio" name="duration" value="31536000000">
+          <label id="duration-1y-label" for="31536000000"></label>
+        </span>
+
+        <!-- custom -->
+        <span>
+          <input id="duration-custom" type="radio" name="duration" value="custom">
+          <label id="duration-custom-label" for="custom"></label>
+          <input id="duration-custom-value" class="radio-text" type="number" size="6"></input>
+          <select id="duration-custom-unit">
+            <option id="unit-minute" value="60000"></option>
+            <option id="unit-hour" value="3600000"></option>
+            <option id="unit-day" value="86400000"></option>
+            <option id="unit-week" value="604800000"></option>
+            <option id="unit-month" value="2592000000"></option>
+            <option id="unit-year" value="31536000000"></option>
+          </select>
+        </span>
+      </fieldset>
+
+      <fieldset id="messages">
+        <legend id="messages-label"></legend>
+
+        <div class="text">
+          <label id="message-progress-label"></label>
+          <input id="message-progress" type="text"></input>
+        </div>
+
+        <div class="text">
+          <label id="message-finished-label"></label>
+          <input id="message-finished" type="text"></input>
+        </div>
+      </fieldset>
+
+      <fieldset id="advanced">
+        <legend id="advanced-label"></legend>
+
+        <div class="text message-short">
+          <label id="height-label"></label>
+          <input id="height" type="text" value="200px"></input>
+        </div>
+
+        <div class="text message-short">
+          <label id="width-label"></label>
+          <input id="width" type="text" value="750px"></input>
+        </div>
+
+        <div class="text">
+          <label id="custom-css-label"></label><br>
+          <textarea id="custom-css" cols="60" rows="4"></textarea>
+        </div>
+
+        <div class="text">
+          <label id="template-label"></label><br>
+          <textarea id="template" cols="60" rows="4">%%iframe%%</textarea>
+        </div>
+      </fieldset>
+
+      <div>
+        <button id="build"></button>
+
+        <span class="info">
+          [<a id="info-help" href="https://scpwiki.github.io/timer" target="_blank"></a>]
+          [<a id="info-source" href="https://github.com/scpwiki/timer" target="_blank"></a>]
+        </span>
+      </div>
+    </div>
+
+    <!-- output -->
+    <div><textarea id="output" class="hidden" cols="60" rows="4" readonly></textarea></div>
+  </body>
+</html>
