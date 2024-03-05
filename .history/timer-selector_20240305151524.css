@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Noto+Sans+SC:wght@100..900&display=swap');
 @font-face {
   font-family: 'Bender';
   src: url(/Bender/Bender.otf);
@@ -7,10 +6,6 @@
   font-style: normal;
 }
 body {
-  font-family: 'Bender','Noto Sans SC', sans-serif;
-  letter-spacing: -.05em;
-}
-input[type="date" i] {
   font-family: 'Bender','Noto Sans SC', sans-serif;
 }
 fieldset {
@@ -46,6 +41,6 @@ fieldset {
   font-size: 0.6em;
 }
 #output {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Droid Sans Mono', 'DejaVu Sans Mono', monospace;
   margin: 0.25em;
 }
