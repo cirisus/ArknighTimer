@@ -2,7 +2,6 @@
 :root {
   --primary-accent: 255, 102, 0;
   --secondary-accent: 255, 212, 0;
-  --scale-3: 80,80,80;
 }
 body {
   font-family: Arial, sans-serif;
