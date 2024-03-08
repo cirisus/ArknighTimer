@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Noto+Sans+SC:wght@100..900&display=swap');
+@font-face {
+  font-family: 'Bender';
+  src: url(https://cdn.jsdelivr.net/gh/cirisus/ArknighTimer/Bender/Bender.otf);
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  font-family: 'Bender','Noto Sans SC', sans-serif;
+  letter-spacing: -.05em;
+  background-color: #1f1940;
+}
+#form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+
+}
+input[type="date" i] {
+  font-family: 'Bender','Noto Sans SC', sans-serif;
+}
+fieldset {
+  color: #fff;
+  margin: 0.2em;
+}
+.radio-text {
+  margin-left: 0.2em;
+}
+.text {
+  margin-top: 0.2em;
+}
+.text input {
+  width: 50%;
+}
+.text-short input {
+  width: 25%;
+}
+#build {
+  margin: 0.4em;
+}
+.info {
+  font-size: 0.8em;
+}
+/* Basic utility classes */
+.hidden {
+  display: none;
+}
+#error {
+  text-align: center;
+  color: #ffa600;
+}
+.error-secondary {
+  font-size: 0.6em;
+}
+#output {
+  font-family: 'JetBrains Mono', monospace;
+  margin: 0.25em;
+}

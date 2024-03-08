@@ -25,13 +25,16 @@ a {
     color: #a96e00;
   }
 }
-#form-container-wrap {
-  --size:15rem;
+#form-container {
+  --size: 15rem;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   height: 100vh;
   width: 100vw;
+  backdrop-filter: blur(10px);
+  position: relative;
   &::before {
     content: '';
     position: absolute;
@@ -41,8 +44,6 @@ a {
     height: var(--size);
     border-radius: 50%;
     background-color: #f00;
-    z-index: -1;
-    transform: translateX(-40%);
   }
   &::after {
     content: '';
@@ -52,30 +53,8 @@ a {
     width: var(--size);
     height: var(--size);
     border-radius: 50%;
-    background-color: rgb(255, 200, 0);
-    z-index: -1;
-    transform: translateX(40%);
+    background-color: #00f;
   }
-}
-#form-container {
-  --size: 15rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
-  -webkit-backdrop-filter: blur(10rem);
-  backdrop-filter: blur(10rem);
-  position: relative;
-
-}
-#form {
-  margin: auto;
-  width: 100%;
-  -webkit-backdrop-filter: blur(10rem);
-  backdrop-filter: blur(10rem);
-  z-index: 1;
 }
 input[type="date" i] {
   font-family: 'Bender','Noto Sans SC', sans-serif;

@@ -52,7 +52,7 @@ a {
     width: var(--size);
     height: var(--size);
     border-radius: 50%;
-    background-color: rgb(255, 200, 0);
+    background-color: #00f;
     z-index: -1;
     transform: translateX(40%);
   }
