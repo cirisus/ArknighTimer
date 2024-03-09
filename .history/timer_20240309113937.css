@@ -8,7 +8,6 @@ body {
   font-family: Arial, sans-serif;
 }
 #timer {
-  padding: 0.5rem;
   border-color: rgb(var(--primary-accent));
   background: repeating-linear-gradient(-45deg, rgb(var(--primary-accent)), rgb(var(--primary-accent)) 45px, rgb(var(--secondary-accent)) 0, rgb(var(--secondary-accent)) 90px);
 }
@@ -25,7 +24,7 @@ body {
   backdrop-filter: blur(5rem);
   text-align: center;
   border-radius: 0.25em;
-  margin: .5em;
+  margin: 1em;
 }
 
 .unit {
