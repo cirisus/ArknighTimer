@@ -303,8 +303,8 @@ function createTimer(language, targetTime, progressMessage, finishedMessage) {
 
     // Calculate total and remaining time in seconds
     var totalTime = elapsed / 1000;
-    var remainingTime = remaining.years * DAYS_MS * 365
-      + remaining.months * DAYS_MS * 30
+    var remainingTime = remaining.years * SECONDS_IN_YEAR
+      + remaining.months * DAYS_MS
       + remaining.days * DAYS_MS
       + remaining.hours * HOURS_MS
       + remaining.minutes * MINUTES_MS

@@ -296,18 +296,16 @@ function createTimer(language, targetTime, progressMessage, finishedMessage) {
     var field = timerFields[i][0];
     document.getElementById(field + '-label').innerText = getMessage(language, field);
   }
-  function updateProgressBar(targetTime) {
+  function updateProgressBar() {
     var remaining = timeRemaining(targetTime);
-    var now = new Date();
-    var elapsed = now - targetTime;
 
     // Calculate total and remaining time in seconds
-    var totalTime = elapsed / 1000;
-    var remainingTime = remaining.years * DAYS_MS * 365
-      + remaining.months * DAYS_MS * 30
-      + remaining.days * DAYS_MS
-      + remaining.hours * HOURS_MS
-      + remaining.minutes * MINUTES_MS
+    var totalTime = (targetTime - startTime) / 1000;
+    var remainingTime = remaining.years * SECONDS_IN_YEAR
+      + remaining.months * SECONDS_IN_MONTH
+      + remaining.days * SECONDS_IN_DAY
+      + remaining.hours * SECONDS_IN_HOUR
+      + remaining.minutes * SECONDS_IN_MINUTE
       + remaining.seconds;
 
     // Calculate progress as a percentage
@@ -315,10 +313,10 @@ function createTimer(language, targetTime, progressMessage, finishedMessage) {
 
     // Set progress line
     var progressLines = document.getElementsByClassName('progress-line');
-    for (var i = 0; i < progressLines.length; i++) {
-      progressLines[i].style.width = progress + '%';
-    }
+      for (var i = 0; i < progressLines.length; i++) {
+    progressLines[i].style.width = progress + '%';
   }
+}
 
   function updateTimer() {
     var remaining = timeRemaining(targetTime);
@@ -365,7 +363,7 @@ function createTimer(language, targetTime, progressMessage, finishedMessage) {
   // Configure timer to run regularly.
   updateTimer();
   setInterval(updateTimer, 1000);
-  setInterval(function() { updateProgressBar(targetTime); }, updateInterval);
+  setInterval(updateProgressBar, updateInterval);
 }
 
 function setup() {
