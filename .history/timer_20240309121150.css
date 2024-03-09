@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url(https://cdn.jsdelivr.net/gh/cirisus/ArknighTimer/GlowSans/GlowSansSC-Condensed-Medium.woff2);
+:root {
+  --primary-accent: 255, 102, 0;
+  --secondary-accent: 255, 212, 0;
+  --scale-3: 80,80,80;
+}
+body {
+  font-family: Arial, sans-serif;
+}
+#timer {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content 1fr;
+  gap: 1px 1px;
+  grid-template-areas:
+    "title"
+    "countdown";
+
+  padding: 0.5rem;
+  border: 3px solid rgb(var(--primary-accent));
+  background: repeating-linear-gradient(-45deg, rgb(var(--primary-accent)), rgb(var(--primary-accent)) 45px, rgb(var(--secondary-accent)) 0, rgb(var(--secondary-accent)) 90px);
+}
+#title {
+  grid-area: title;
+  text-align: center;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+#clock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: countdown;
+  color: #f3f2ec;
+  background-color: rgb(var(--scale-3),.75);
+  -webkit-backdrop-filter: blur(1rem);
+  backdrop-filter: blur(1rem);
+  text-align: center;
+  border-radius: 0.25em;
+  margin: .5em;
+  box-shadow: 0 0 4px black
+}
+
+.unit {
+  display: inline-flex;
+  margin: 0.5em;
+  justify-content: center;
+  align-items: center;
+}
+
+.unit-value {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2em;
+  background-color: #ccc;
+  border-radius: 0.25em;
+  padding: 0.15em;
+}
+
+.unit-label {
+  font-size: 1.5em;
+}
+
+/* Basic utility classes */
+.hidden {
+  display: none;
+}
+
+.error {
+  color: #fd0;
+}
+
+.error-secondary {
+  font-size: 0.6em;
+}
+
+.progress {
+  color: black;
+}
+
+.finished {
+  color: #282;
+}

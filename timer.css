@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url(https://cdn.jsdelivr.net/gh/cirisus/ArknighTimer/GlowSans/GlowSansSC-Condensed-Medium.woff2);
 :root {
   --primary-accent: 255, 102, 0;
   --secondary-accent: 255, 212, 0;
