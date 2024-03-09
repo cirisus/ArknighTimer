@@ -30,25 +30,19 @@ body {
 }
 
 #clock {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   grid-area: countdown;
   color: #f3f2ec;
-  background-color: rgb(var(--scale-3),.75);
-  -webkit-backdrop-filter: blur(1rem);
-  backdrop-filter: blur(1rem);
+  background-color: rgb(var(--scale-3));
+  -webkit-backdrop-filter: blur(5rem);
+  backdrop-filter: blur(5rem);
   text-align: center;
   border-radius: 0.25em;
-  margin: .5em;
-  box-shadow: 0 0 4px black
+  margin: .5em
 }
 
 .unit {
-  display: inline-flex;
+  display: inline-block;
   margin: 0.5em;
-  justify-content: center;
-  align-items: center;
 }
 
 .unit-value {
