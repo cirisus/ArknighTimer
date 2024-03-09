@@ -326,8 +326,8 @@ function createTimer(language, targetTime, progressMessage, finishedMessage) {
     }
 
     // Set progress bar width
-    var progressLine = document.getElementById('progress-line');
-    progressLine.style.width = progress + '%';
+    var progressBar = document.getElementById('progress');
+    progressBar.style.width = progress + '%';
 
     // Set individual timer fields
     for (var i = 0; i < timerFields.length; i++) {
