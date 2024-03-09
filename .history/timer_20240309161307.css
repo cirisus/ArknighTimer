@@ -111,7 +111,7 @@ h2#title:after {
     height: fit-content;
     border-radius: 0.15em;
     z-index: 1;
-    transform: translate(75%,-50%);
+    transform: translate(-25%,-50%);
     box-shadow: 0 0 3px 0px black;
     padding: 2px 3px;
     align-items: center;
