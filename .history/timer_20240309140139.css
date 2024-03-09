@@ -89,9 +89,11 @@ h2#title:after {
 .error {
   color: rgb(255, 111, 0);
 }
+
 .error-secondary {
   font-size: 0.6em;
 }
+
 .progress {
   color: #f3f2ec;
   background: rgb(var(--scale-2));

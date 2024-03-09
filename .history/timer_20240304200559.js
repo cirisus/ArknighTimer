@@ -119,13 +119,13 @@ function getMessage(language, messageKey) {
   // Get message based on language
   var messages = translations[language];
   if (!messages) {
-    setError('暂无此语言的计时器 ' + language);
+    setError('No translations for language: ' + language);
     return null;
   }
 
   var message = messages[messageKey];
   if (!message) {
-    setError('无效的参数' + messageKey);
+    setError('No such message key: ' + messageKey);
     return null;
   }
 
