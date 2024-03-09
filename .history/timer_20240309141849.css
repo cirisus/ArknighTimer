@@ -40,15 +40,6 @@ body {
     outline: 2px solid #ffd301;
     box-shadow: inset 0 0 2px #ffd400;
     background-image: repeating-linear-gradient(135deg, rgb(var(--scale-2)), rgb(var(--scale-2)) 8px, rgb(111 111 111) 0, rgb(117 117 117) 16px);
-    background-size: 500%;
-}
-@keyframes progerss-bar {
-  0% {
-    background-position-x: 100%;
-  }
-  100% {
-    background-position: -400%;
-  }
 }
 /*
 h2#title:after {
