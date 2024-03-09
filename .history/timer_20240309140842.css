@@ -38,7 +38,6 @@ body {
   padding: 0 .5rem;
   margin: auto;
 }
-/*
 h2#title:after {
   content: '';
   height: 47px;
@@ -49,7 +48,7 @@ h2#title:after {
   -webkit-clip-path: polygon(60% 0, 100% 50%, 60% 100%, 0 100%, 0 0);
   clip-path: polygon(60% 0, 100% 50%, 60% 100%, 0 100%, 0 0);
 }
-*/
+
 #clock {
   display: flex;
   justify-content: center;
