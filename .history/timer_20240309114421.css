@@ -15,22 +15,20 @@ body {
   grid-template-rows: min-content 1fr;
   gap: 1px 1px;
   grid-template-areas:
-    "title"
-    "countdown";
+    "."
+    ".";
 
   padding: 0.5rem;
   border-color: rgb(var(--primary-accent));
   background: repeating-linear-gradient(-45deg, rgb(var(--primary-accent)), rgb(var(--primary-accent)) 45px, rgb(var(--secondary-accent)) 0, rgb(var(--secondary-accent)) 90px);
 }
 #title {
-  grid-area: title;
   text-align: center;
   margin-block-start: 0;
   margin-block-end: 0;
 }
 
 #clock {
-  grid-area: countdown;
   color: #f3f2ec;
   background-color: rgb(var(--scale-3));
   -webkit-backdrop-filter: blur(5rem);
