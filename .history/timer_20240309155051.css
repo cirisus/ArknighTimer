@@ -91,7 +91,7 @@ h2#title:after {
     height: fit-content;
     border-radius: 0.15em;
     background-color: #ffc700;
-    z-index: 1;
+    z-index: -1;
     transform: translate(-20%,-20%);
     box-shadow: 0 0 3px 0px black;
     padding: 2px 3px;
@@ -110,7 +110,7 @@ h2#title:after {
     width: fit-content;
     height: fit-content;
     border-radius: 0.15em;
-    z-index: 1;
+    z-index: -1;
     transform: translate(-20%,-20%);
     box-shadow: 0 0 3px 0px black;
     padding: 2px 3px;
