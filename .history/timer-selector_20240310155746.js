@@ -161,8 +161,8 @@ function buildUrl(language, startDate, durationMs, startMessage, progressMessage
   parameters.append('start', startDate.toISOString());
   parameters.append('time', targetDate.toISOString());
 
-  if (startMessage) {
-    parameters.append('unstarted', startMessage);
+  if (progressMessage) {
+    parameters.append('progress', startMessage);
   }
   if (progressMessage) {
     parameters.append('progress', progressMessage);
@@ -241,8 +241,8 @@ function getDuration() {
 }
 
 function getTextData(language) {
-  var unstartedElement = document.getElementById('message-unstarted');
-  if (unstartedElement === null) {
+  var progressElement = document.getElementById('message-unstarted');
+  if (progressElement === null) {
     alert(getMessage(language, 'error-missing'));
     throw new Error('Missing unstarted element in getTextData()');
   }

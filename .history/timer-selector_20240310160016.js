@@ -161,8 +161,8 @@ function buildUrl(language, startDate, durationMs, startMessage, progressMessage
   parameters.append('start', startDate.toISOString());
   parameters.append('time', targetDate.toISOString());
 
-  if (startMessage) {
-    parameters.append('unstarted', startMessage);
+  if (progressMessage) {
+    parameters.append('progress', startMessage);
   }
   if (progressMessage) {
     parameters.append('progress', progressMessage);
@@ -283,7 +283,7 @@ function getTextData(language) {
   }
 
   return {
-    startMessage: unstartedElement.value,
+    startMessage: unstartElement.value,
     progressMessage: progressElement.value,
     finishedMessage: finishedElement.value,
     height: heightElement.value,

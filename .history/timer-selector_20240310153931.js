@@ -26,7 +26,6 @@ var TRANSLATIONS = {
   // English
   'en': {
     'timer-description': 'Timer expiring at',
-    'timer-unstarted': 'Timer not started until',
     'timer-progress': 'This timer will expire in',
     'timer-finished': 'This timer has been expired since',
     'timer-type': 'Timer Type',
@@ -49,7 +48,6 @@ var TRANSLATIONS = {
     'start-time-now': 'Now',
     'start-time-later': 'Later',
     'messages': 'Messages',
-    'message-start': 'Timer unstarted (optional)',
     'message-progress': 'Timer in-progress (optional)',
     'message-finished': 'Timer finished (optional)',
     'advanced-section': 'Advanced',
@@ -72,7 +70,6 @@ var TRANSLATIONS = {
   // Simplified Chinese
   'cn': {
     'timer-description': '此计时器将过期于：',
-    'timer-unstarted': '此计时器将在此时间后开始：',
     'timer-progress': '此计时器将过期于：',
     'timer-finished': '此计时器已过期：',
     'timer-type': '计时器类型',
@@ -95,7 +92,6 @@ var TRANSLATIONS = {
     'start-time-now': '现在',
     'start-time-later': '稍后',
     'messages': '通知内容',
-    'message-start': '此计时器未开始（可选）',
     'message-progress': '此计时器运行中（可选）',
     'message-finished': '此计时器已到期（可选）',
     'advanced-section': '高级设置',
@@ -103,7 +99,7 @@ var TRANSLATIONS = {
     'width': '宽度',
     'css-extra': '自定计时器样式（可选）',
     'template': '输出模板',
-    'template-deletion': '由于条目的分数为-X分，现根据[https://arknights.wikidot.com/guide:licensing#toc15 删除流程]，宣告将删除此页：\n\n%%iframe%%\n\n**如果你不是作者又想要重写该条目，请在此帖回复申请。请先取得作者（或管理员，如果此文档搬运自聊天室的话）的同意，并将原文的源代码复制至沙盒里。除非你是工作人员，否则请勿就申请重写以外的范围回复此帖。**',
+    'template-deletion': '由于条目的分数为-X分，现根据[[[deletions-guide|删帖指导]]]，宣告将删除此页：\n\n%%iframe%%\n\n**如果你不是作者又想要重写该条目，请在此帖回复申请。请先取得作者（或管理员，如果此文档搬运自聊天室的话）的同意，并将原文的源代码复制至沙盒里。除非你是工作人员，否则请勿就申请重写以外的范围回复此帖。**',
     'template-ban': '%%iframe%%',
     'message-deletion-progress': '此页面将在计时器到期后可供删除：',
     'message-deletion-finished': '此页面在下列时间前已可供删除：',
@@ -161,8 +157,8 @@ function buildUrl(language, startDate, durationMs, startMessage, progressMessage
   parameters.append('start', startDate.toISOString());
   parameters.append('time', targetDate.toISOString());
 
-  if (startMessage) {
-    parameters.append('unstarted', startMessage);
+  if (progressMessage) {
+    parameters.append('progress', startMessage);
   }
   if (progressMessage) {
     parameters.append('progress', progressMessage);
@@ -241,11 +237,6 @@ function getDuration() {
 }
 
 function getTextData(language) {
-  var unstartedElement = document.getElementById('message-unstarted');
-  if (unstartedElement === null) {
-    alert(getMessage(language, 'error-missing'));
-    throw new Error('Missing unstarted element in getTextData()');
-  }
   var progressElement = document.getElementById('message-progress');
   if (progressElement === null) {
     alert(getMessage(language, 'error-missing'));
@@ -283,7 +274,6 @@ function getTextData(language) {
   }
 
   return {
-    startMessage: unstartedElement.value,
     progressMessage: progressElement.value,
     finishedMessage: finishedElement.value,
     height: heightElement.value,
@@ -308,7 +298,6 @@ function buildTimer(language) {
     language,
     startDate,
     durationMs,
-    data.startMessage,
     data.progressMessage,
     data.finishedMessage,
     data.styling,
@@ -347,10 +336,8 @@ function initializeMessages(language) {
   setMessage('unit-year');
 
   setMessage('messages-label', 'messages');
-  document.getElementById('message-unstarted').placeholder = getMessage(language, 'timer-unstarted');
   document.getElementById('message-progress').placeholder = getMessage(language, 'timer-progress');
   document.getElementById('message-finished').placeholder = getMessage(language, 'timer-finished');
-  setMessage('message-unstarted-label', 'message-start');
   setMessage('message-progress-label', 'message-progress');
   setMessage('message-finished-label', 'message-finished');
 

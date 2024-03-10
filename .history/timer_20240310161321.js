@@ -34,7 +34,6 @@ function getMessage(language, messageKey) {
     // English
     'en': {
       'timer-description': 'Timer expiring at',
-      'timer-unstarted': 'Timer starting at',
       'timer-progress': 'This timer will expire in',
       'timer-finished': 'This timer has been expired since',
       'years': 'years',
@@ -44,6 +43,59 @@ function getMessage(language, messageKey) {
       'minutes': 'minutes',
       'seconds': 'seconds',
     },
+
+    // French
+    'fr': {
+      'timer-description': 'Fin du compte à rebours à',
+      'timer-progress': 'Ce compte à rebours se terminera dans',
+      'timer-finished': 'Ce compte à rebous est terminé depuis',
+      'years': 'ans',
+      'months': 'mois',
+      'days': 'jours',
+      'hours': 'heures',
+      'minutes': 'minutes',
+      'seconds': 'secondes',
+    },
+    
+    // Pig Latin
+    'pig': {
+      'timer-description': 'Imertay expiringyay atyay',
+      'timer-progress': 'Isthay imertay illway expireyay inyay',
+      'timer-finished': 'Isthay imertay ashay eenbay expiredyay incesay',
+      'years': 'earsyay',
+      'months': 'onthsmay',
+      'days': 'aysday',
+      'hours': 'ourshay',
+      'minutes': 'inutesmay',
+      'seconds': 'econdssay',
+    },
+
+    // Spanish
+    'es': {
+      'timer-description': 'El temporizador finaliza en',
+      'timer-progress': 'El temporizador finalizará en',
+      'timer-finished': 'El temporizador ha finalizado desde hace',
+      'years': 'años',
+      'months': 'meses',
+      'days': 'días',
+      'hours': 'horas',
+      'minutes': 'minutos',
+      'seconds': 'segundos',
+    },
+    
+    // Vietnamese
+    'vi': {
+      'timer-description': 'Đồng hồ kết thúc vào',
+      'timer-progress': 'Đồng hồ sẽ kết thúc trong',
+      'timer-finished': 'Đồng hồ này đã kết thúc kể từ',
+      'years': 'năm',
+      'months': 'tháng',
+      'days': 'ngày',
+      'hours': 'giờ',
+      'minutes': 'phút',
+      'seconds': 'giây',
+    },
+    
     // Simplified Chinese
     'cn': {
       'timer-description': '此计时器将过期于：',

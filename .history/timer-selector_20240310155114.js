@@ -161,8 +161,8 @@ function buildUrl(language, startDate, durationMs, startMessage, progressMessage
   parameters.append('start', startDate.toISOString());
   parameters.append('time', targetDate.toISOString());
 
-  if (startMessage) {
-    parameters.append('unstarted', startMessage);
+  if (progressMessage) {
+    parameters.append('progress', startMessage);
   }
   if (progressMessage) {
     parameters.append('progress', progressMessage);
@@ -241,8 +241,8 @@ function getDuration() {
 }
 
 function getTextData(language) {
-  var unstartedElement = document.getElementById('message-unstarted');
-  if (unstartedElement === null) {
+  var progressElement = document.getElementById('message-unstarted');
+  if (progressElement === null) {
     alert(getMessage(language, 'error-missing'));
     throw new Error('Missing unstarted element in getTextData()');
   }
@@ -347,10 +347,10 @@ function initializeMessages(language) {
   setMessage('unit-year');
 
   setMessage('messages-label', 'messages');
-  document.getElementById('message-unstarted').placeholder = getMessage(language, 'timer-unstarted');
+  document.getElementById('message-start').placeholder = getMessage(language, 'timer-unstarted');
   document.getElementById('message-progress').placeholder = getMessage(language, 'timer-progress');
   document.getElementById('message-finished').placeholder = getMessage(language, 'timer-finished');
-  setMessage('message-unstarted-label', 'message-start');
+  setMessage('message-start-label', 'message-start');
   setMessage('message-progress-label', 'message-progress');
   setMessage('message-finished-label', 'message-finished');
 
