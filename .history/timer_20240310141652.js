@@ -327,19 +327,16 @@ function updateProgressBar(startTimestamp, targetTime) {
     var titleElement = document.getElementById('title');
 
     if (now < startTime) {
-      // Before the start time, show the countdown to the start time
-      remaining = calculateTimeDifference(startTime, false);
+      remaining = timeRemaining(startTime);
       titleElement.innerText = "距离开始还有";
       titleElement.classList = ['unstarted'];
       document.getElementById('clock').setAttribute('data-status', 'unstarted');
     } else if (now < targetTime) {
-      // After the start time but before the end time, show the countdown to the end time
       remaining = calculateTimeDifference(targetTime, false);
       titleElement.innerText = progressMessage;
       titleElement.classList = ['progress'];
       document.getElementById('clock').setAttribute('data-status', 'running');
     } else {
-      // After the end time, show the elapsed time since the end time
       remaining = calculateTimeDifference(targetTime, true);
       titleElement.innerText = finishedMessage;
       titleElement.classList = ['finished'];

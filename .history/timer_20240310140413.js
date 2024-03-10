@@ -208,20 +208,17 @@ function dateDiff(startDate, endDate) {
 }
 
 // Calculate difference in time, in all units
-function calculateTimeDifference(targetTime, isElapsed) {
-  var now = new Date();
-  var startTime = isElapsed ? targetTime : now;
-  var endTime = isElapsed ? now : targetTime;
-  var elapsed = Math.abs(endTime - startTime);
+function timeRemaining(targetTime) {
+  var data = elapsedData(targetTime);
 
   // Differences > 1 day
-  var dateDiffs = dateDiff(startTime, endTime);
+  var dateDiffs = dateDiff(data.startTime, data.endTime);
   var years = dateDiffs.years;
   var months = dateDiffs.months;
   var days = dateDiffs.days;
 
   // Differences < 1 day
-  elapsed = Math.floor(elapsed % DAYS_MS);
+  var elapsed = Math.floor(data.elapsed % DAYS_MS);
 
   var hours = Math.floor(elapsed / HOURS_MS);
   elapsed = Math.floor(elapsed % HOURS_MS);
@@ -255,7 +252,56 @@ function calculateTimeDifference(targetTime, isElapsed) {
     hours: hours,
     minutes: minutes,
     seconds: seconds,
-    finished: isElapsed,
+    finished: data.finished,
+    highest: highest,
+  };
+}
+function timeElapsed(targetTime) {
+  var now = new Date();
+  var elapsed = now - targetTime;
+
+  // Differences > 1 day
+  var dateDiffs = dateDiff(targetTime, now);
+  var years = dateDiffs.years;
+  var months = dateDiffs.months;
+  var days = dateDiffs.days;
+
+  // Differences < 1 day
+  var elapsed = Math.floor(elapsed % DAYS_MS);
+
+  var hours = Math.floor(elapsed / HOURS_MS);
+  elapsed = Math.floor(elapsed % HOURS_MS);
+
+  var minutes = Math.floor(elapsed / MINUTES_MS);
+  elapsed = Math.floor(elapsed % MINUTES_MS);
+
+  var seconds = Math.floor(elapsed / SECONDS_MS);
+  elapsed = Math.floor(elapsed % MINUTES_MS);
+
+  // Get highest unit present
+  var highest;
+  if (years > 0) {
+    highest = YEARS_ENUM;
+  } else if (months > 0) {
+    highest = MONTHS_ENUM;
+  } else if (days > 0) {
+    highest = DAYS_ENUM;
+  } else if (hours > 0) {
+    highest = HOURS_ENUM;
+  } else if (minutes > 0) {
+    highest = MINUTES_ENUM;
+  } else {
+    highest = SECONDS_ENUM;
+  }
+
+  return {
+    years: years,
+    months: months,
+    days: days,
+    hours: hours,
+    minutes: minutes,
+    seconds: seconds,
+    finished: true,
     highest: highest,
   };
 }
@@ -297,50 +343,55 @@ function createTimer(language, startTime, targetTime, progressMessage, finishedM
     var field = timerFields[i][0];
     document.getElementById(field + '-label').innerText = getMessage(language, field);
   }
-function updateProgressBar(startTimestamp, targetTime) {
+  function updateProgressBar(startTimestamp, targetTime) {
     var now = new Date();
     var startTime = new Date(startTimestamp);
-    var elapsed = (now - startTime) / 1000;
+    var elapsed = now - startTime;
 
-    // Calculate total time in seconds
-    var totalTime = (targetTime - startTime) / 1000;
+    // Calculate total and remaining time in seconds
+    var totalTime = elapsed / 1000;
+    var remaining = timeRemaining(targetTime);
+    var remainingTime = remaining.years * DAYS_MS * 365
+      + remaining.months * DAYS_MS * 30
+      + remaining.days * DAYS_MS
+      + remaining.hours * HOURS_MS
+      + remaining.minutes * MINUTES_MS
+      + remaining.seconds;
 
     // Calculate progress as a percentage
     var progress;
     if (now < startTime) {
-        progress = 0;
+      progress = 0;
     } else if (now >= targetTime) {
-        progress = 100;
+      progress = 100;
     } else {
-        progress = 100 * elapsed / totalTime;
+      progress = 100 - (remainingTime / totalTime * 100);
     }
 
     // Set progress line
     var progressLines = document.getElementsByClassName('progress-line');
     for (var i = 0; i < progressLines.length; i++) {
-        progressLines[i].style.width = progress + '%';
+      progressLines[i].style.width = progress + '%';
     }
-}
+  }
+
   function updateTimer() {
     var now = new Date();
     var remaining;
     var titleElement = document.getElementById('title');
 
     if (now < startTime) {
-      // Before the start time, show the countdown to the start time
-      remaining = calculateTimeDifference(startTime, false);
+      remaining = timeRemaining(startTime);
       titleElement.innerText = "距离开始还有";
       titleElement.classList = ['unstarted'];
       document.getElementById('clock').setAttribute('data-status', 'unstarted');
     } else if (now < targetTime) {
-      // After the start time but before the end time, show the countdown to the end time
-      remaining = calculateTimeDifference(targetTime, false);
+      remaining = timeRemaining(targetTime);
       titleElement.innerText = progressMessage;
       titleElement.classList = ['progress'];
       document.getElementById('clock').setAttribute('data-status', 'running');
     } else {
-      // After the end time, show the elapsed time since the end time
-      remaining = calculateTimeDifference(targetTime, true);
+      remaining = timeElapsed(targetTime);
       titleElement.innerText = finishedMessage;
       titleElement.classList = ['finished'];
       document.getElementById('clock').setAttribute('data-status', 'expired');
@@ -362,7 +413,7 @@ function updateProgressBar(startTimestamp, targetTime) {
     }
   }
     // Determine update interval based on highest unit of time
-    var initialRemaining = calculateTimeDifference(targetTime, false);
+    var initialRemaining = timeRemaining(targetTime);
     var updateInterval = MINUTES_MS; // default to update every minute
 
     if (initialRemaining.highest === HOURS_ENUM || initialRemaining.highest === MINUTES_ENUM || initialRemaining.highest === SECONDS_ENUM) {

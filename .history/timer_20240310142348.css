@@ -178,21 +178,23 @@ body {
 .hidden {
   display: none;
 }
+
 .error {
   color: rgb(255, 111, 0);
+  animation: none;
 }
 .error-secondary {
   font-size: 0.6em;
 }
 .unstarted {
   color: rgb(255, 111, 0);
+  animation: none;
 }
 .progress {
   color: #f3f2ec;
 }
+
 .finished {
   color: #fff28e;
-}
-.error,.unstarted,.finished {
-  animation: none !important;
+  animation: none;
 }

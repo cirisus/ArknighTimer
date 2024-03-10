@@ -297,49 +297,54 @@ function createTimer(language, startTime, targetTime, progressMessage, finishedM
     var field = timerFields[i][0];
     document.getElementById(field + '-label').innerText = getMessage(language, field);
   }
-function updateProgressBar(startTimestamp, targetTime) {
+  function updateProgressBar(startTimestamp, targetTime) {
     var now = new Date();
     var startTime = new Date(startTimestamp);
-    var elapsed = (now - startTime) / 1000;
+    var elapsed = now - startTime;
 
-    // Calculate total time in seconds
-    var totalTime = (targetTime - startTime) / 1000;
+    // Calculate total and remaining time in seconds
+    var totalTime = elapsed / 1000;
+    var remaining = calculateTimeDifference(targetTime, false);
+    var remainingTime = remaining.years * DAYS_MS * 365
+      + remaining.months * DAYS_MS * 30
+      + remaining.days * DAYS_MS
+      + remaining.hours * HOURS_MS
+      + remaining.minutes * MINUTES_MS
+      + remaining.seconds;
 
     // Calculate progress as a percentage
     var progress;
     if (now < startTime) {
-        progress = 0;
+      progress = 0;
     } else if (now >= targetTime) {
-        progress = 100;
+      progress = 100;
     } else {
-        progress = 100 * elapsed / totalTime;
+      progress = 100 - (remainingTime / totalTime * 100);
     }
 
     // Set progress line
     var progressLines = document.getElementsByClassName('progress-line');
     for (var i = 0; i < progressLines.length; i++) {
-        progressLines[i].style.width = progress + '%';
+      progressLines[i].style.width = progress + '%';
     }
-}
+  }
+
   function updateTimer() {
     var now = new Date();
     var remaining;
     var titleElement = document.getElementById('title');
 
     if (now < startTime) {
-      // Before the start time, show the countdown to the start time
-      remaining = calculateTimeDifference(startTime, false);
+      remaining = timeRemaining(startTime);
       titleElement.innerText = "距离开始还有";
       titleElement.classList = ['unstarted'];
       document.getElementById('clock').setAttribute('data-status', 'unstarted');
     } else if (now < targetTime) {
-      // After the start time but before the end time, show the countdown to the end time
       remaining = calculateTimeDifference(targetTime, false);
       titleElement.innerText = progressMessage;
       titleElement.classList = ['progress'];
       document.getElementById('clock').setAttribute('data-status', 'running');
     } else {
-      // After the end time, show the elapsed time since the end time
       remaining = calculateTimeDifference(targetTime, true);
       titleElement.innerText = finishedMessage;
       titleElement.classList = ['finished'];

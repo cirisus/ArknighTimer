@@ -340,7 +340,7 @@ function updateProgressBar(startTimestamp, targetTime) {
       document.getElementById('clock').setAttribute('data-status', 'running');
     } else {
       // After the end time, show the elapsed time since the end time
-      remaining = calculateTimeDifference(targetTime, true);
+      remaining = calculateTimeDifference(now, true);
       titleElement.innerText = finishedMessage;
       titleElement.classList = ['finished'];
       document.getElementById('clock').setAttribute('data-status', 'expired');
