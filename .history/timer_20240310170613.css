@@ -151,7 +151,7 @@ body {
 }
 .progress-line {
   height: 100%;
-  background-image: repeating-linear-gradient(-45deg, rgb(var(--scale-2)), rgb(var(--scale-2)) 6px, rgb(var(--secondary-accent)) 0, rgb(var(--secondary-accent)) 12px);
+  background-image: repeating-linear-gradient(-45deg, rgb(var(--zero-accent)), rgb(var(--zero-accent)) 6px, rgb(var(--secondary-accent)) 0, rgb(var(--secondary-accent)) 12px);
   background-size: 600%;
   border-radius: 2px;
   display: inline-flex;
@@ -165,7 +165,7 @@ body {
   animation-direction: reverse
 }
 #clock[data-status="expired"] .progress-line {
-  background-image: repeating-linear-gradient(-45deg, rgb(var(--zero-accent)), rgb(var(--zero-accent)) 6px, rgb(var(--secondary-accent)) 0, rgb(var(--secondary-accent)) 12px);
+  background-image: repeating-linear-gradient(-45deg, rgb(var(--zero-accent)), rgb(var(--zero-accent)) 6px, rgb(var(--primary-accent)) 0, rgb(var(--primary-accent)) 12px);
 }
 .unit {
   display: inline-flex;

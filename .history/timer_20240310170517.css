@@ -18,7 +18,6 @@ body {
 }
 #timer {
   user-select: none;
-  margin: 0 auto;
   display: grid;
   padding: 0.5rem;
   border: 3px solid rgb(var(--scale-2));
@@ -75,7 +74,7 @@ body {
   padding: 0 .25rem;
   box-shadow: 0 0 4px black;
   box-sizing: border-box;
-  min-width: 250px;
+  min-width: 150px;
   &::before {
     content: 'Status';
     font-family: "Barlow Condensed", sans-serif;
@@ -151,7 +150,7 @@ body {
 }
 .progress-line {
   height: 100%;
-  background-image: repeating-linear-gradient(-45deg, rgb(var(--scale-2)), rgb(var(--scale-2)) 6px, rgb(var(--secondary-accent)) 0, rgb(var(--secondary-accent)) 12px);
+  background-image: repeating-linear-gradient(-45deg, rgb(var(--zero-accent)), rgb(var(--zero-accent)) 6px, rgb(var(--secondary-accent)) 0, rgb(var(--secondary-accent)) 12px);
   background-size: 600%;
   border-radius: 2px;
   display: inline-flex;
@@ -165,7 +164,7 @@ body {
   animation-direction: reverse
 }
 #clock[data-status="expired"] .progress-line {
-  background-image: repeating-linear-gradient(-45deg, rgb(var(--zero-accent)), rgb(var(--zero-accent)) 6px, rgb(var(--secondary-accent)) 0, rgb(var(--secondary-accent)) 12px);
+  background-image: repeating-linear-gradient(-45deg, rgb(var(--zero-accent)), rgb(var(--zero-accent)) 6px, rgb(var(--primary-accent)) 0, rgb(var(--primary-accent)) 12px);
 }
 .unit {
   display: inline-flex;
